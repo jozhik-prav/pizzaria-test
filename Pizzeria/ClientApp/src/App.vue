@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <Header></Header>
-    <router-view />
+    <div class="container">
+      <router-view />
+    </div>
   </div>
 </template>
 
@@ -26,14 +28,20 @@ export default class App extends Vue {}
 
 html {
   font-size: 18px;
+  background: #333 url(assets/pattern-body.jpg);
+  color: #fff;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px 0;
 }
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
 }
 
 #nav {
