@@ -1,9 +1,9 @@
 <template>
     <div class="filter-wrapper">
         <div class="filter-search">
-            <input class="search-input" type="text" name="search" id="search">
+            <input class="search-input form-control" type="text" name="search" id="search">
         </div>
-        <div class="filter-sort">
+        <div class="filter-sort form-control">
             <select name="sort" id="sort" class="sort-select">
                 <option value="">Сортировка по цене</option>
                 <option value="От дешевых к дорогим">От дешевых к дорогим</option>
@@ -41,6 +41,28 @@ export default class FilterMenu extends Vue {
     }
 
     .sort-select {
-        padding: 5px 10px;
+        border: none;
+        outline: none;
+        background: transparent;
+        color: inherit;
+        option {
+            color: #000;
+        }
+    }
+
+    .form-control {
+        padding: 10px 20px;
+        color: #fff;
+        background-image: none;
+        border: 1px solid #cccccc;
+        transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+        background-color: transparent;
+        margin-bottom: 15px;
+        display: block;
+        &:focus {
+            border-color: #66afe9;
+            outline: 0;
+            box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+        }
     }
 </style>
