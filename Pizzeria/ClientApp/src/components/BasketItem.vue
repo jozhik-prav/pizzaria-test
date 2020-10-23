@@ -30,6 +30,11 @@ export default class BasketItem extends Vue {
         align-items: center;
         box-shadow: 0px 2px 0px 0px #010202;
         border-bottom: 1px solid #383838;
+        padding: 10px 0;
+        @media screen and (max-width: 480px) {
+            flex-wrap: wrap;
+            justify-content: center;
+        }
     }
 
     .item-img {
@@ -46,6 +51,9 @@ export default class BasketItem extends Vue {
         h5 {
             color: #fdbc2c;
             font-size: 24px;
+        }
+        @media screen and (max-width: 480px) {
+           flex: 1 1 70%; 
         }
     }
 

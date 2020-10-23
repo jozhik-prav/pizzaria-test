@@ -28,12 +28,23 @@ export default class MenuItem extends Vue {
         width: 25%;
         padding: 0 15px;
         margin-bottom: 10px;
+        @media screen and (max-width: 992px) {
+            width: 33%;
+        }
+        @media screen and (max-width: 768px) {
+            width: 50%;
+        }
+        @media screen and (max-width: 480px) {
+            width: 100%;
+        }
     }
 
     .card-image {
         img {
             display: block;
             margin: 0 auto;
+            max-width: 100%;
+            height: auto;
         }
     }
 

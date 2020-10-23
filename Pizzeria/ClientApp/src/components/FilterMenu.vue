@@ -29,10 +29,17 @@ export default class FilterMenu extends Vue {
         align-items: center;
         border-bottom: 4px solid #D94F2B;
         padding: 10px 0;
+        @media screen and (max-width: 480px) {
+            flex-direction: column;
+            align-items: start;
+        }
     }
 
     .filter-search {
         width: 50%;
+        @media screen and (max-width: 480px) {
+            width: 100%;
+        }
     }
 
     .search-input {
