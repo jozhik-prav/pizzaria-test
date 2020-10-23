@@ -14,14 +14,19 @@
 		<Content Remove="$(SpaRoot)**" />
 		<None Include="$(SpaRoot)**" Exclude="$(SpaRoot)node_modules\**" />
 	</ItemGroup>
-	
-  <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
+
+	<ItemGroup>
+	  <Compile Remove="Migrations\20201023194733_Init.cs" />
+	  <Compile Remove="Migrations\20201023194733_Init.Designer.cs" />
+	</ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.9" />
-    <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="3.1.9" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="3.1.9">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="VueCliMiddleware" Version="3.1.2" />
   </ItemGroup>
 

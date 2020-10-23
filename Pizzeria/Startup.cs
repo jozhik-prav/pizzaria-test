@@ -27,7 +27,8 @@ namespace Pizzeria
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<ApplicationContext>(options => options.UseInMemoryDatabase("PizzaDb"));
+            var connectionString = Configuration.GetConnectionString("Default");
+            services.AddDbContext<ApplicationContext>(options => options.UseSqlite(connectionString));
             services.ConfigureApplicationCookie(options => options.Events.OnRedirectToLogin = ctx =>
             {
                 ctx.Response.StatusCode = 401;
@@ -41,12 +42,14 @@ namespace Pizzeria
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationContext db)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            db.Database.Migrate();
 
             app.UseSpaStaticFiles();
 
