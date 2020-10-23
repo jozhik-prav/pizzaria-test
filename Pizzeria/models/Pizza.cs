@@ -1,0 +1,64 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace Pizzeria.models
+{
+    /// <summary>
+    /// Пицца
+    /// </summary>
+    public class Pizza
+    {
+        /// <summary>
+        /// Создает пиццу
+        /// </summary>
+        /// <param name="name">Название пиццы</param>
+        /// <param name="ingredients">Ингредиенты пиццы</param>
+        /// <param name="price">Цена пиццы</param>
+        /// <param name="picture">Фотография пиццы</param>
+        public Pizza (string name, string ingredients, decimal price, string picture)
+        {
+            if (string.IsNullOrEmpty(name))
+                throw new ArgumentNullException(nameof(name), "Не задано название пиццы");
+            if (string.IsNullOrEmpty(ingredients))
+                throw new ArgumentNullException(nameof(ingredients), "Не заданы ингредиенты пиццы");
+            if (price <= 0)
+                throw new ArgumentNullException(nameof(price), "Цена пиццы не может быть отрицательной или равна 0");
+            if (string.IsNullOrEmpty(picture))
+                throw new ArgumentNullException(nameof(picture), "Не задана фотография пиццы");
+
+            Id = Guid.NewGuid();
+            Name = name;
+            Ingredients = ingredients;
+            Price = price;
+            Picture = picture;
+        }
+
+        /// <summary>
+        /// Идентификатор пиццы
+        /// </summary>
+        public Guid Id { get; private set; }
+
+        /// <summary>
+        /// Название пиццы
+        /// </summary>
+        public string Name { get; private set; }
+
+        /// <summary>
+        /// Ингредиенты пиццы
+        /// </summary>
+        public string Ingredients { get; private set; }
+
+        /// <summary>
+        /// Цена пиццы
+        /// </summary>
+        public decimal Price { get; private set; }
+
+        /// <summary>
+        /// Фотография пиццы
+        /// </summary>
+        public string Picture { get; private set; }
+
+    }
+}
