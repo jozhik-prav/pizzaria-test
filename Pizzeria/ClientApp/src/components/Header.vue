@@ -1,8 +1,9 @@
 <template>
     <header class="header">
         <div class="header-title">Pizzeria</div>
-        <div class="header-btn">
-            <span>Корзина</span>
+        <div class="header-basket">
+            <img src="../assets/cart.svg" alt="" class="icon-cart">
+            <span class="basket-number">2</span>
         </div>
     </header>
 </template>
@@ -32,14 +33,31 @@ export default class Header extends Vue {
         font-size: 1.5rem;
     }
 
-    .header-btn {
+    .header-basket {
         background: #fdbc2c;
         height: 100%;
         cursor: pointer;
-        span {
-            padding: 35px 10px;
-            display: block;
-        }
+        padding: 26px 25px;
+    }
+
+    .icon-cart {
+        width: 40px;
+        height: 40px;
+    }
+
+    .basket-number {
+        position: absolute;
+        top: 25px;
+        right: 15px;
+        width: 18px;
+        height: 18px;
+        font-weight: 700;
+        font-size: 12px;
+        color: #151515;
+        border-radius: 50%;
+        background-color: #fff;
+        display: grid;
+        place-items: center;
     }
 
 </style>
