@@ -52,34 +52,4 @@ export default class Basket extends Vue {}
         display: flex;
         justify-content: space-between;
     }
-
-    .btn {
-        margin-bottom: 14px;
-        padding: 10px 25px;
-        font-size: 14px;
-        font-weight: 700;
-        border-width: 2px;
-        border-style: solid;
-        transition: all 0.3s;
-        text-transform: uppercase;
-        background: transparent;
-        cursor: pointer;
-    }
-
-    .btn-primary {
-        background-color: #fdbc2c;
-        border-color: #fdbc2c;
-        &:hover {
-            background: #D94F2B;
-            color: #fff;
-        }
-    }
-
-    .btn-outline-primary {
-        border-color: #fdbc2c;
-        color: #fff;
-        &:hover {
-            background: #D94F2B;
-        }
-    }
 </style>

@@ -9,7 +9,7 @@
         </div>
         <div class="card-footer">
             <p class="card-price">425 ₽</p>
-            <button class="card-btn">Добавить</button>
+            <button class="btn btn-primary">Добавить</button>
         </div>
     </div>
 </template>
