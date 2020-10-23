@@ -2,6 +2,7 @@
     <div class="filter-wrapper">
         <div class="filter-search">
             <input class="search-input form-control" type="text" name="search" id="search">
+            <img src="../assets/search.svg" alt="" class="icon-search">
         </div>
         <div class="filter-sort form-control">
             <select name="sort" id="sort" class="sort-select">
@@ -37,23 +38,9 @@ export default class FilterMenu extends Vue {
 
     .filter-search {
         width: 50%;
+        position: relative;
         @media screen and (max-width: 480px) {
             width: 100%;
-        }
-    }
-
-    .search-input {
-        padding: 5px 10px;
-        width: 100%;
-    }
-
-    .sort-select {
-        border: none;
-        outline: none;
-        background: transparent;
-        color: inherit;
-        option {
-            color: #000;
         }
     }
 
@@ -71,5 +58,31 @@ export default class FilterMenu extends Vue {
             outline: 0;
             box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
         }
+    }
+
+    .search-input {
+        padding-left: 35px;
+        width: 100%;
+    }
+
+    .filter-sort {
+        padding: 7px 20px;
+    }
+
+    .sort-select {
+        border: none;
+        outline: none;
+        background: transparent;
+        color: inherit;
+        option {
+            color: #000;
+        }
+    }
+
+    .icon-search {
+        width: 20px;
+        position: absolute;
+        top: 8px;
+        left: 8px;
     }
 </style>
