@@ -11,7 +11,7 @@
             <button class="control-btn"> + </button>
         </div>
         <div class="item-price">890 ₽</div>
-        <div class="item-delete">Удалить</div>
+        <div class="item-delete"><img src="../assets/delete.svg" alt=""></div>
     </article>
 </template>
 
@@ -85,5 +85,8 @@ export default class BasketItem extends Vue {
         display: flex;
         flex-flow: column;
         justify-content: center;
+        img {
+            width: 20px;
+        }
     }
 </style>
