@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 
 namespace Pizzeria.models
 {
@@ -17,6 +14,8 @@ namespace Pizzeria.models
         /// <param name="ingredients">Ингредиенты пиццы</param>
         /// <param name="price">Цена пиццы</param>
         /// <param name="picture">Фотография пиццы</param>
+        /// <exception cref="ArgumentNullException">Если не указано значение параметром</exception>
+        /// <exception cref="ArgumentOutOfRangeException">Если цена отрицательная</exception>
         public Pizza (string name, string ingredients, decimal price, string picture)
         {
             if (string.IsNullOrEmpty(name))
@@ -24,7 +23,7 @@ namespace Pizzeria.models
             if (string.IsNullOrEmpty(ingredients))
                 throw new ArgumentNullException(nameof(ingredients), "Не заданы ингредиенты пиццы");
             if (price <= 0)
-                throw new ArgumentNullException(nameof(price), "Цена пиццы не может быть отрицательной или равна 0");
+                throw new ArgumentOutOfRangeException(nameof(price), price, "Цена пиццы не может быть отрицательной или равна 0");
             if (string.IsNullOrEmpty(picture))
                 throw new ArgumentNullException(nameof(picture), "Не задана фотография пиццы");
 
@@ -34,6 +33,8 @@ namespace Pizzeria.models
             Price = price;
             Picture = picture;
         }
+
+
 
         /// <summary>
         /// Идентификатор пиццы
