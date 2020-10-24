@@ -1,25 +1,28 @@
 <template>
     <div class="card">
         <div class="card-image">
-            <img src="../assets/1.png" alt="">
+            <img :src="picture" alt="">
         </div>
         <div class="card-content">
-            <h5 class="card-title">Гавайская</h5>
-            <p class="card-text">Цыпленок, томатный соус, моцарелла, ананасы</p>
+            <h5 class="card-title">{{ name }}</h5>
+            <p class="card-text">{{ ingredients }}</p>
         </div>
         <div class="card-footer">
-            <p class="card-price">425 ₽</p>
+            <p class="card-price">{{ price }} ₽</p>
             <button class="btn btn-primary">Добавить</button>
         </div>
     </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class MenuItem extends Vue {
-    
+    @Prop() private name!: string;
+    @Prop() private ingredients!: string;
+    @Prop() private price!: number;
+    @Prop() private picture!: string;
 }
 </script>
 
