@@ -31,6 +31,8 @@ export default class MenuItem extends Vue {
         width: 25%;
         padding: 0 15px;
         margin-bottom: 10px;
+        display: flex;
+        flex-direction: column;
         @media screen and (max-width: 992px) {
             width: 33%;
         }
@@ -53,6 +55,7 @@ export default class MenuItem extends Vue {
 
     .card-content {
         margin-bottom: 10px;
+        flex-grow: 1;
     }
 
     .card-title {
@@ -69,6 +72,9 @@ export default class MenuItem extends Vue {
         display: flex;
         justify-content: space-between;
         align-items: center;
+        .btn {
+            margin-bottom: 0;
+        }
     }
     .card-price {
          color: #D94F2B;
