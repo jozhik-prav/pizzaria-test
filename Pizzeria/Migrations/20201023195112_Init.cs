@@ -21,11 +21,6 @@ namespace Pizzeria.Migrations
                 {
                     table.PrimaryKey("PK_Pizzas", x => x.Id);
                 });
-
-            migrationBuilder.InsertData(
-                table: "Pizzas",
-                columns: new[] { "Id", "Ingredients", "Name", "Picture", "Price" },
-                values: new object[] { new Guid("f6fbd2d0-67fd-4e35-ab3a-9691567750d2"), "Цыпленок, томатный соус, моцарелла, ананасы", "Гавайская", "1", 425m });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
