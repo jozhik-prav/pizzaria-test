@@ -16,5 +16,10 @@ export default new Vuex.Store({
     }
   },
   actions: {},
-  modules: {}
+  modules: {},
+  getters: {
+    totalSum: state => {
+      return state.basket.map(x => x.pizza.price * x.count).reduce((a, b) => a + b)
+    }
+  }
 });

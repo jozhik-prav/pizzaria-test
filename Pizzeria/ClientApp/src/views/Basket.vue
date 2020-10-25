@@ -4,7 +4,7 @@
         <BasketItem v-for="item in this.$store.state.basket" :key="item.index" :name="item.pizza.name" :ingredients="item.pizza.ingredients" :price="item.pizza.price" :picture="item.pizza.picture" :count="item.count"></BasketItem>
         <div class="basket-total">
             <div class="total-label">Сумма заказа:</div>
-            <div class="total-value">890 ₽</div>
+            <div class="total-value">{{ this.$store.getters.totalSum }} ₽</div>
         </div>
         <div class="basket-footer">
             <button class="btn btn-outline-primary">Вернуться в меню</button>
