@@ -2,12 +2,15 @@
     <div class="basket-container">
         <h1 class="container-title">Корзина</h1>
         <BasketItem v-for="item in this.$store.state.basket" :key="item.index" :orderLine="item"></BasketItem>
+        <div v-if="$store.getters.basketIsEmpty">В корзине нет товаров</div>
         <div class="basket-total">
             <div class="total-label">Сумма заказа:</div>
             <div class="total-value">{{ this.$store.getters.totalSum }} ₽</div>
         </div>
         <div class="basket-footer">
-            <button class="btn btn-outline-primary">Вернуться в меню</button>
+            <router-link to="/">
+                <button class="btn btn-outline-primary">Вернуться в меню</button>
+            </router-link>
             <button class="btn btn-primary">Оформить заказ</button>
         </div>
     </div>
