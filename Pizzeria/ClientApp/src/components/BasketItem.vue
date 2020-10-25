@@ -6,12 +6,12 @@
             <p>{{ orderLine.pizza.ingredients }}</p>
         </main>
         <div class="item-control">
-            <button class="control-btn">-</button>
+            <button class="control-btn" @click="decrement">-</button>
             <span> {{ orderLine.count }} </span>
-            <button class="control-btn">+</button>
+            <button class="control-btn" @click="increment">+</button>
         </div>
         <div class="item-price">{{ orderLine.pizza.price }} ₽</div>
-        <div class="item-delete"><img src="../assets/delete.svg" alt="" /></div>
+        <a class="item-delete" @click="remove"><img src="../assets/delete.svg" alt=""/></a>
     </article>
 </template>
 
@@ -22,6 +22,18 @@ import { Component, Prop, Vue } from 'vue-property-decorator';
 @Component
 export default class BasketItem extends Vue {
     @Prop() private orderLine!: OrderLine;
+
+    increment() {
+        this.$store.dispatch('incrementCountPizza', this.orderLine.pizza.id);
+    }
+
+    decrement() {
+        this.$store.dispatch('decrementCountPizza', this.orderLine.pizza.id);
+    }
+
+    remove() {
+        this.$store.dispatch('deleteOrderLine', this.orderLine.pizza.id);
+    }
 }
 </script>
 
