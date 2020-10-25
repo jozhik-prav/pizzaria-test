@@ -6,15 +6,15 @@
                 <img src="../assets/search.svg" alt="" class="icon-search" />
             </div>
             <div class="filter-sort form-control">
-                <select name="sort" id="sort" class="sort-select">
-                    <option value="">Сортировка по цене</option>
-                    <option value="От дешевых к дорогим">От дешевых к дорогим</option>
-                    <option value="От дорогих к дешевым">От дорогих к дешевым</option>
+                <select name="sort" id="sort" class="sort-select" v-model="sortMethod">
+                    <option value="none">Сортировка по цене</option>
+                    <option value="asc">От дешевых к дорогим</option>
+                    <option value="desc">От дорогих к дешевым</option>
                 </select>
             </div>
         </div>
         <div class="menu-container">
-            <MenuItem v-for="pizza in pizzas" v-show="isShow(pizza)" :key="pizza.id" :pizza="pizza"></MenuItem>
+            <MenuItem v-for="pizza in sortedList" v-show="isShow(pizza)" :key="pizza.id" :pizza="pizza"></MenuItem>
         </div>
     </div>
 </template>
@@ -38,12 +38,27 @@ export default class Menu extends Vue {
         return this.searchText.toLowerCase();
     }
 
-    async mounted() {
-        this.pizzas = (await this.$axios.get('/api/pizzas')).data;
-    }
-
     isShow(pizza: Pizza): boolean {
         return pizza.name.toLowerCase().includes(this.lowerCaseSearchText);
+    }
+
+    sortMethod: 'none' | 'asc' | 'desc' = 'none';
+
+    get sortedList(): Pizza[] {
+        switch (this.sortMethod) {
+            case 'none':
+                return this.pizzas;
+            case 'asc':
+                return [...this.pizzas].sort((a, b) => a.price - b.price);
+            case 'desc':
+                return [...this.pizzas].sort((a, b) => b.price - a.price);
+            default:
+                throw new Error('Неожиданный метод сортировки');
+        }
+    }
+
+    async mounted() {
+        this.pizzas = (await this.$axios.get('/api/pizzas')).data;
     }
 }
 </script>
