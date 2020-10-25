@@ -9,7 +9,7 @@
         </div>
         <div class="card-footer">
             <p class="card-price">{{ price }} ₽</p>
-            <button class="btn btn-primary">Добавить</button>
+            <button class="btn btn-primary" @click="addToBasket()">Добавить</button>
         </div>
     </div>
 </template>
@@ -23,6 +23,18 @@ export default class MenuItem extends Vue {
     @Prop() private ingredients!: string;
     @Prop() private price!: number;
     @Prop() private picture!: string;
+
+    addToBasket() {
+        this.$store.commit("addPizza", {
+            pizza: {
+                name: this.name,
+                ingredients: this.ingredients,
+                price: this.price,
+                picture: this.picture
+            },
+            count: 1
+        })
+    }
 }
 </script>
 

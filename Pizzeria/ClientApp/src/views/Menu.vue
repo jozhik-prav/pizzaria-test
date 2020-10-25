@@ -11,13 +11,7 @@
 import { Component, Vue } from "vue-property-decorator";
 import FilterMenu from "@/components/FilterMenu.vue";
 import MenuItem from "@/components/MenuItem.vue";
-
-interface Pizza {
-    name: string,
-    ingredients: string,
-    price: number,
-    picture: string
-}
+import { Pizza } from "@/Pizza.ts";
 
 @Component({
   components: {

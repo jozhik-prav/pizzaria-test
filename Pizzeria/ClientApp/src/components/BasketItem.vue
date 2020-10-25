@@ -1,26 +1,30 @@
 <template>
     <article class="item">
-        <img class="item-img" src="../assets/1.png" alt="">
+        <img class="item-img" :src="picture" alt="">
         <main class="item-content">
-            <h5>Гавайская</h5>
-            <p>Цыпленок, томатный соус, моцарелла, ананасы</p>
+            <h5>{{ name }}</h5>
+            <p>{{ ingredients }}</p>
         </main>
         <div class="item-control">
             <button class="control-btn"> - </button>
-            <span> 2 </span>
+            <span> {{ count }} </span>
             <button class="control-btn"> + </button>
         </div>
-        <div class="item-price">890 ₽</div>
+        <div class="item-price">{{ price }} ₽</div>
         <div class="item-delete"><img src="../assets/delete.svg" alt=""></div>
     </article>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import { Component, Prop, Vue } from "vue-property-decorator";
 
 @Component
 export default class BasketItem extends Vue {
-    
+    @Prop() private name!: string;
+    @Prop() private ingredients!: string;
+    @Prop() private price!: number;
+    @Prop() private picture!: string;
+    @Prop() private count!: number;
 }
 </script>
 

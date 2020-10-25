@@ -1,10 +1,14 @@
 <template>
     <header class="header">
-        <div class="header-title">Pizzeria</div>
-        <div class="header-basket">
-            <img src="../assets/cart.svg" alt="" class="icon-cart">
-            <span class="basket-number">2</span>
-        </div>
+        <router-link to="/">
+            <div class="header-title">Pizzeria</div>
+        </router-link>
+        <router-link to="/basket">
+            <div class="header-basket">
+                <img src="../assets/cart.svg" alt="" class="icon-cart">
+                <span class="basket-number" v-if="this.$store.state.basket.length > 0">{{ this.$store.state.basket.length }}</span>
+            </div>
+        </router-link>
     </header>
 </template>
 
@@ -13,7 +17,6 @@ import { Component, Vue } from "vue-property-decorator";
 
 @Component
 export default class Header extends Vue {
-    
 }
 </script>
 

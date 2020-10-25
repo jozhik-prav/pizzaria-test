@@ -26,6 +26,10 @@ export default class App extends Vue {}
   box-sizing: border-box;
 }
 
+a {
+  text-decoration: none;
+}
+
 html {
   font-size: 18px;
   background: #333 url(assets/pattern-body.jpg);

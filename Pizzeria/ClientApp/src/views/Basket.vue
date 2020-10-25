@@ -1,8 +1,7 @@
 <template>
     <div class="basket-container">
         <h1 class="container-title">Корзина</h1>
-        <BasketItem></BasketItem>
-        <BasketItem></BasketItem>
+        <BasketItem v-for="item in this.$store.state.basket" :key="item.index" :name="item.pizza.name" :ingredients="item.pizza.ingredients" :price="item.pizza.price" :picture="item.pizza.picture" :count="item.count"></BasketItem>
         <div class="basket-total">
             <div class="total-label">Сумма заказа:</div>
             <div class="total-value">890 ₽</div>
