@@ -1,51 +1,55 @@
 <template>
-  <div id="app">
-    <Header></Header>
-    <div class="container">
-      <router-view />
+    <div id="app">
+        <Header></Header>
+        <div class="container">
+            <router-view />
+        </div>
     </div>
-  </div>
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import Header from "@/components/Header.vue";
+import { Component, Vue } from 'vue-property-decorator';
+import Header from '@/components/Header.vue';
 
 @Component({
-  components: {
-    Header
-  }
+    components: {
+        Header
+    }
 })
 export default class App extends Vue {}
 </script>
 
 <style lang="scss">
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 a {
-  text-decoration: none;
+    text-decoration: none;
+}
+
+.align-self-center {
+    align-self: center;
 }
 
 html {
-  font-size: 18px;
-  background: #333 url(assets/pattern-body.jpg);
-  color: #fff;
+    font-size: 18px;
+    background: #333 url(assets/pattern-body.jpg);
+    color: #fff;
 }
 
 .container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 10px 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 10px 15px;
 }
 
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 .btn {
@@ -65,7 +69,7 @@ html {
     background-color: #fdbc2c;
     border-color: #fdbc2c;
     &:hover {
-        background: #D94F2B;
+        background: #d94f2b;
         color: #fff;
     }
 }
@@ -74,7 +78,7 @@ html {
     border-color: #fdbc2c;
     color: #fff;
     &:hover {
-        background: #D94F2B;
+        background: #d94f2b;
     }
 }
 </style>

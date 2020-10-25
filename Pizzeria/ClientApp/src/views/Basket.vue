@@ -1,7 +1,7 @@
 <template>
     <div class="basket-container">
         <h1 class="container-title">Корзина</h1>
-        <BasketItem v-for="item in this.$store.state.basket" :key="item.index" :name="item.pizza.name" :ingredients="item.pizza.ingredients" :price="item.pizza.price" :picture="item.pizza.picture" :count="item.count"></BasketItem>
+        <BasketItem v-for="item in this.$store.state.basket" :key="item.index" :orderLine="item"></BasketItem>
         <div class="basket-total">
             <div class="total-label">Сумма заказа:</div>
             <div class="total-value">{{ this.$store.getters.totalSum }} ₽</div>
@@ -14,41 +14,41 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
-import BasketItem from "@/components/BasketItem.vue";
+import { Component, Vue } from 'vue-property-decorator';
+import BasketItem from '@/components/BasketItem.vue';
 
 @Component({
-  components: {
-   BasketItem
-  }
+    components: {
+        BasketItem
+    }
 })
 export default class Basket extends Vue {}
 </script>
 
 <style lang="scss">
-    .container-title {
-        border-bottom: 4px solid #D94F2B;
-        margin-bottom: 20px;
-        padding-bottom: 10px;
-    }
+.container-title {
+    border-bottom: 4px solid #d94f2b;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+}
 
-    .basket-total {
-        display: flex;
-        justify-content: flex-end;
-        align-items: center;
-        font-size: 1.5rem;
-        font-weight: 700;
-        margin: 20px 0;
-    }
+.basket-total {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin: 20px 0;
+}
 
-    .total-value {
-        color: #D94F2B;
-        padding-left: 10px;
-        font-size: 2rem;
-    }
+.total-value {
+    color: #d94f2b;
+    padding-left: 10px;
+    font-size: 2rem;
+}
 
-    .basket-footer {
-        display: flex;
-        justify-content: space-between;
-    }
+.basket-footer {
+    display: flex;
+    justify-content: space-between;
+}
 </style>

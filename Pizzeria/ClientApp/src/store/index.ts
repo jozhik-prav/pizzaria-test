@@ -1,3 +1,4 @@
+import { OrderLine } from '@/Types';
 import Vue from "vue";
 import Vuex from "vuex";
 
@@ -5,7 +6,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
   state: {
-    basket: Array<any>()
+    basket: Array<OrderLine>()
   },
   mutations: {
     addPizza(state, payload) {
@@ -19,7 +20,13 @@ export default new Vuex.Store({
   modules: {},
   getters: {
     totalSum: state => {
-      return state.basket.map(x => x.pizza.price * x.count).reduce((a, b) => a + b)
+      return state.basket.map(x => x.pizza.price * x.count).reduce((a, b) => a + b, 0)
+    },
+    positionCount: state => {
+      return state.basket.length
+    },
+    basketIsEmpty: (_, getters) => {
+      return getters.positionCount === 0
     }
   }
 });
