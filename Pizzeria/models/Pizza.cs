@@ -31,10 +31,9 @@ namespace Pizzeria.models
             Name = name;
             Ingredients = ingredients;
             Price = price;
+            DiscountPrice = price;
             Picture = picture;
         }
-
-
 
         /// <summary>
         /// Идентификатор пиццы
@@ -55,6 +54,14 @@ namespace Pizzeria.models
         /// Цена пиццы
         /// </summary>
         public decimal Price { get; private set; }
+
+        private decimal _discountPrice;
+
+        /// <summary>
+        /// Цена со скидкой
+        /// </summary>
+        /// <exception cref="ArgumentOutOfRangeException">Если записывается неправильное значение скидки</exception>
+        public decimal DiscountPrice { get => _discountPrice; set => _discountPrice = (value > 0 && value <= Price) ? value : throw new ArgumentOutOfRangeException(nameof(DiscountPrice), "Не правильное значение цены со скидкой"); }
 
         /// <summary>
         /// Фотография пиццы

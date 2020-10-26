@@ -55,8 +55,11 @@ export default new Vuex.Store({
     }
   },
   getters: {
-    totalSum: (state): number => {
-      return state.basket.map(x => x.pizza.price * x.count).reduce((a, b) => a + b, 0)
+    totalSum: (state, getters): number => {
+      return state.basket.map(x => x.pizza.price * x.count).reduce((a, b) => a + b, 0) - getters.discountSum;
+    },
+    discountSum: (state): number => {
+      return state.basket.map(x => (x.pizza.price - x.pizza.discountPrice) * x.count).reduce((a, b) => a + b, 0)
     },
     positionCount: (state): number => {
       return state.basket.length

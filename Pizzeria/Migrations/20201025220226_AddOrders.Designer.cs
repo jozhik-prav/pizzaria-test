@@ -2,15 +2,17 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Pizzeria;
 
 namespace Pizzeria.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    partial class ApplicationContextModelSnapshot : ModelSnapshot
+    [Migration("20201025220226_AddOrders")]
+    partial class AddOrders
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,9 +24,6 @@ namespace Pizzeria.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("TEXT");
 
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("TEXT");
-
                     b.HasKey("Id");
 
                     b.ToTable("Orders");
@@ -34,9 +33,6 @@ namespace Pizzeria.Migrations
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("TEXT");
-
-                    b.Property<decimal>("DiscountPrice")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Ingredients")
@@ -74,9 +70,6 @@ namespace Pizzeria.Migrations
                                 .HasColumnType("INTEGER");
 
                             b1.Property<Guid>("PizzaId")
-                                .HasColumnType("TEXT");
-
-                            b1.Property<decimal>("Price")
                                 .HasColumnType("TEXT");
 
                             b1.HasKey("OrderId", "Id");

@@ -18,6 +18,10 @@
 	<ItemGroup>
 	  <Compile Remove="Migrations\20201023194733_Init.cs" />
 	  <Compile Remove="Migrations\20201023194733_Init.Designer.cs" />
+	  <Compile Remove="Migrations\20201025220051_AddOrders.cs" />
+	  <Compile Remove="Migrations\20201025220051_AddOrders.Designer.cs" />
+	  <Compile Remove="Migrations\20201026215322_AddIdToOrderLine.cs" />
+	  <Compile Remove="Migrations\20201026215322_AddIdToOrderLine.Designer.cs" />
 	</ItemGroup>
 
   <ItemGroup>

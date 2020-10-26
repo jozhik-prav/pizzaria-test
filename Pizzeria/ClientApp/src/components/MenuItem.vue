@@ -8,7 +8,10 @@
             <p class="card-text">{{ pizza.ingredients }}</p>
         </div>
         <div class="card-footer">
-            <p class="card-price">{{ pizza.price }} ₽</p>
+            <div :class="{ discount: isDiscount() }">
+                <span class="card-price">{{ pizza.price }} ₽</span>
+                <span v-if="isDiscount()" class="card-new-price">{{ pizza.discountPrice }} ₽</span>
+            </div>
             <button class="btn btn-primary" @click="addToBasket()">Добавить</button>
         </div>
     </div>
@@ -28,16 +31,23 @@ export default class MenuItem extends Vue {
             count: 1
         });
     }
+
+    isDiscount(): boolean {
+        return this.pizza.discountPrice < this.pizza.price;
+    }
 }
 </script>
 
 <style lang="scss">
 .card {
     width: 25%;
-    padding: 0 15px;
-    margin-bottom: 10px;
+    padding: 20px 15px;
+    margin-bottom: 40px;
     display: flex;
     flex-direction: column;
+    border: 4px solid transparent;
+    border-radius: 3px;
+
     @media screen and (max-width: 992px) {
         width: 33%;
     }
@@ -46,6 +56,10 @@ export default class MenuItem extends Vue {
     }
     @media screen and (max-width: 480px) {
         width: 100%;
+    }
+
+    &:hover {
+        border-color: #fdbc2c;
     }
 }
 
@@ -84,6 +98,20 @@ export default class MenuItem extends Vue {
 .card-price {
     color: #d94f2b;
     font-size: 24px;
+}
+
+.discount {
+    .card-price {
+        color: #fff;
+        text-decoration: line-through;
+        font-size: 14px;
+    }
+
+    .card-new-price {
+        color: #d94f2b;
+        font-size: 24px;
+        margin-left: 10px;
+    }
 }
 
 .card-btn {

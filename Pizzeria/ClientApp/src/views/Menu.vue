@@ -15,6 +15,7 @@
         </div>
         <div class="menu-container">
             <MenuItem v-for="pizza in sortedList" v-show="isShow(pizza)" :key="pizza.id" :pizza="pizza"></MenuItem>
+            <div v-if="pizzas.length == 0">Пицц нет :( Приходите позже</div>
         </div>
     </div>
 </template>
@@ -67,7 +68,7 @@ export default class Menu extends Vue {
 .menu-container {
     display: flex;
     flex-wrap: wrap;
-    padding-top: 20px;
+    padding: 40px 0;
 }
 .filter-wrapper {
     display: flex;

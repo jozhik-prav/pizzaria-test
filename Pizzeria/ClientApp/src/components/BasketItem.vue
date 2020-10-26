@@ -10,7 +10,10 @@
             <span> {{ orderLine.count }} </span>
             <button class="control-btn" @click="increment">+</button>
         </div>
-        <div class="item-price">{{ orderLine.pizza.price }} ₽</div>
+        <div class="item-price" :class="{ discount: isDiscount() }">
+            <p class="price">{{ orderLine.pizza.price }} ₽</p>
+            <p class="new-price" v-if="isDiscount()">{{ orderLine.pizza.discountPrice }} ₽</p>
+        </div>
         <a class="item-delete" @click="remove"><img src="../assets/delete.svg" alt=""/></a>
     </article>
 </template>
@@ -33,6 +36,10 @@ export default class BasketItem extends Vue {
 
     remove() {
         this.$store.dispatch('deleteOrderLine', this.orderLine.pizza.id);
+    }
+
+    isDiscount(): boolean {
+        return this.orderLine.pizza.discountPrice < this.orderLine.pizza.price;
     }
 }
 </script>
@@ -92,14 +99,31 @@ export default class BasketItem extends Vue {
 }
 
 .item-price {
-    color: #d94f2b;
-    font-size: 24px;
     flex: 0 0 auto;
     display: flex;
     flex-flow: column;
     justify-content: center;
     padding: 0 10px;
     margin: 0 12px;
+    text-align: center;
+    .price {
+        color: #d94f2b;
+        font-size: 24px;
+    }
+}
+
+.discount {
+    .price {
+        color: #fff;
+        text-decoration: line-through;
+        font-size: 14px;
+        margin-top: -17px;
+    }
+
+    .new-price {
+        color: #d94f2b;
+        font-size: 24px;
+    }
 }
 
 .item-delete {

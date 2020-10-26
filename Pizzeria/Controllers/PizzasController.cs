@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Pizzeria.InputModels;
 using Pizzeria.models;
 using System;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Pizzeria.Controllers
@@ -21,7 +22,7 @@ namespace Pizzeria.Controllers
         [HttpGet]
         public async Task<IActionResult> GetPizzas()
         {
-            return Ok(await _db.Pizzas.ToListAsync());
+            return Ok(_db.Pizzas.Select(x => new { x.Id, x.Ingredients, x.Name, x.Picture, x.Price, x.DiscountPrice}));
         }
 
         [HttpPost]
@@ -38,6 +39,28 @@ namespace Pizzeria.Controllers
             }
             
             _db.Pizzas.Add(newPizza);
+            await _db.SaveChangesAsync();
+            return Ok();
+        }
+
+        [HttpPost]
+        [Route("{id}/setDiscountPrice")]
+        public async Task<IActionResult> SetDiscountPrice(Guid id, [FromBody] decimal discountPrice)
+        {
+            var pizza = _db.Pizzas.Find(id);
+
+            if (pizza == null)
+                return NotFound("Пицца не найдена");
+
+            try
+            {
+                pizza.DiscountPrice = discountPrice;
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+
             await _db.SaveChangesAsync();
             return Ok();
         }
