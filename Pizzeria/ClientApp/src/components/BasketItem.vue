@@ -74,6 +74,7 @@ export default class BasketItem extends Vue {
     }
     @media screen and (max-width: 480px) {
         flex: 1 1 70%;
+        margin-bottom: 20px;
     }
 }
 
@@ -118,11 +119,21 @@ export default class BasketItem extends Vue {
         text-decoration: line-through;
         font-size: 14px;
         margin-top: -17px;
+        @media screen and (max-width: 480px) {
+            margin-top: 0;
+            margin-right: 10px;
+        }
     }
 
     .new-price {
         color: #d94f2b;
         font-size: 24px;
+    }
+
+    @media screen and (max-width: 480px) {
+        display: flex;
+        flex-flow: row;
+        align-items: center;
     }
 }
 

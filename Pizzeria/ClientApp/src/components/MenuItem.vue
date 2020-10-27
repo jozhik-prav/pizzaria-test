@@ -9,8 +9,8 @@
         </div>
         <div class="card-footer">
             <div :class="{ discount: isDiscount() }">
-                <span class="card-price">{{ pizza.price }} ₽</span>
-                <span v-if="isDiscount()" class="card-new-price">{{ pizza.discountPrice }} ₽</span>
+                <p class="card-price">{{ pizza.price }} ₽</p>
+                <p v-if="isDiscount()" class="card-new-price">{{ pizza.discountPrice }} ₽</p>
             </div>
             <button class="btn btn-primary" @click="addToBasket()">Добавить</button>
         </div>
@@ -73,7 +73,7 @@ export default class MenuItem extends Vue {
 }
 
 .card-content {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
     flex-grow: 1;
 }
 
@@ -110,7 +110,7 @@ export default class MenuItem extends Vue {
     .card-new-price {
         color: #d94f2b;
         font-size: 24px;
-        margin-left: 10px;
+        //margin-left: 10px;
     }
 }
 

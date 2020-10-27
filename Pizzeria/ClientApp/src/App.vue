@@ -63,6 +63,9 @@ html {
     text-transform: uppercase;
     background: transparent;
     cursor: pointer;
+    @media screen and (max-width: 768px) {
+        padding: 10px;
+    }
 }
 
 .btn-primary {
