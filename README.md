@@ -58,7 +58,7 @@ content-type: application/json
 
 Отправить новый заказ
 
-```http
+```
 POST http://localhost:5000/api/orders HTTP/1.1
 content-type: application/json
 
