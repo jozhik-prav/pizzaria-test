@@ -1,6 +1,7 @@
 import { OrderLine } from '@/Types';
 import Vue from "vue";
 import Vuex from "vuex";
+import createPersistedState from "vuex-persistedstate";
 
 Vue.use(Vuex);
 
@@ -70,5 +71,6 @@ export default new Vuex.Store({
     findOrdelLineByIndex: state => (id: string): number => {
       return state.basket.findIndex(x => x.pizza.id === id)
     }
-  }
+  },
+  plugins: [createPersistedState()],
 });
